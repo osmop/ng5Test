@@ -1,0 +1,36 @@
+<p>
+  Home page below (home.component) !
+</p>
+
+<div class="container color-dark">
+  <div class="col">
+    <p>Add a bucket list item</p>
+  </div>
+  <div class="col">
+      <p>Your bucket list ({{ itemCount}})</p>
+  </div>
+</div>
+
+<div class="container color-light">
+ <!--   <div class="container color-light" [@goals]="goals.length"> -->
+
+  <div class="col">
+    <p class="sm">Use this form to add a new bucket list item</p>
+    <form>
+      <input type="text" class="text" name="item" placeholder="Life goal.."[(ngModel)]="goalText">
+        <div *ngIf="goalText; else elseTextBlock">
+            <input type="submit" class="btn" [value]="submitBtnText" (click)="addItem()">
+        </div>
+        <ng-template #elseTextBlock>
+            <b>Add new item and submit</b>
+        </ng-template>
+    </form>
+  </div>
+  <div class="col">
+   <p class="sm color-middle" *ngFor="let goal of goals; let i=index" (click)="removeItem(i)">
+<!--     <p class="life-container" *ngFor="let goal of goals">  -->
+      {{ goal }}
+    </p>
+  </div>
+</div>
+
